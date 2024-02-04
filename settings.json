@@ -1,0 +1,58 @@
+{
+  "new_path": "C:/Users/rober/Downloads/",
+  "Sheet1": "Invoiced Items",
+  "Sheet2": "Invoice Totals",
+  "columns1": [
+    "STORE",
+    "DELV DT",
+    "INVOICE#",
+    "PAGE",
+    "DEPT",
+    "QTY ORD",
+    "QTY SHP",
+    "ITEM #",
+    "DESCRIPTION",
+    "PRODUCT UPC",
+    "AWGSELL",
+    "FREIGHT",
+    "TOTAL ALLOW",
+    "NET COST",
+    "PACK",
+    "UNT COST",
+    "EXT NT COST",
+    "TOTAL WEIGHT",
+    "PB"
+  ],
+  "columns1_currency": [
+    "K", "L", "M", "N", "P", "Q"
+  ],
+  "columns2": [
+    "TOTAL ORDERED",
+    "TOTAL SHIPPED",
+    "TOTAL INVOICE AMOUNT",
+    "COUNTED ORDERED",
+    "COUNTED SHIPPED",
+    "COUNTED AMOUNT"
+  ],
+  "columns2_currency": [
+    "H", "K"
+  ],
+  "departments": {
+    "10": "Grocery",
+    "11": "Supplies",
+    "20": "Dairy",
+    "30": "Frozen",
+    "31": "Ice Cream",
+    "40": "Meat Fresh",
+    "41": "Meat Processed",
+    "42": "Meat Frozen",
+    "43": "Seafood",
+    "45": "Deli",
+    "46": "Bakery",
+    "50": "Produce",
+    "51": "Floral",
+    "60": "General Merchandise",
+    "61": "Health Beauty Care",
+    "62": "Specialty Food"
+  }
+}
