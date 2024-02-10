@@ -108,7 +108,7 @@ for pdf_path in pdf_file_paths:
             if text[counter] == "STORE":
                 sheet1_line[columns1.index("STORE")] = int(text[counter + 1])
                 counter += 2
-            if text[counter] == "DEPT":
+            if text[counter] == "DEPT" and len(text[counter + 1]) == 3:
                 try:
                     sheet1_line[columns1.index("DEPT")] = departments[text[counter + 1][0:2]]
                 except KeyError:
