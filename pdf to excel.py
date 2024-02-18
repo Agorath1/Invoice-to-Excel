@@ -1,6 +1,6 @@
 # The program converts Storefront PDFs to a excel spreadsheet
 #
-#Version      Author
+# Version      Author
 #  1.1      Robertp3001
 
 import fitz
