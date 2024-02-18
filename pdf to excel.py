@@ -1,3 +1,8 @@
+# The program converts Storefront PDFs to a excel spreadsheet
+#
+#Version      Author
+#  1.1      Robertp3001
+
 import fitz
 import pandas
 from openpyxl import load_workbook
@@ -29,6 +34,9 @@ def select_multiple_pdfs():
 
 
 def auto_adjust_column(workbook):
+    # Adjust column sizes of of every used column in the workbook
+
+    # Style used for money columns
     currency_style = NamedStyle(name="currency_style", number_format="$#,##0.00")
 
     for sheet_name in workbook.sheetnames:
@@ -40,6 +48,7 @@ def auto_adjust_column(workbook):
 
             for cell in col:
                 if cell.row > 1:
+                    # Checks if for columns that need to be converted to money format
                     if sheet_name == settings_info["Sheet1"] and column in settings_info["columns1_currency"]:
                         cell.style = currency_style
                     if sheet_name == settings_info["Sheet2"] and column in settings_info["columns2_currency"]:
@@ -66,8 +75,8 @@ def workbook_from_path(excel_path):
     wb.save(excel_path)
 
     # Use the start command to open the file with its default program
-    print("Opening Excel document " + excel_path.split("/")[-1])
-    os.system(f'start "" "{excel_path}"')
+    # print("Opening Excel document " + excel_path.split("/")[-1])
+    # os.system(f'start "" "{excel_path}"')
 
 
 # Load Global Settings
@@ -106,8 +115,11 @@ for pdf_path in pdf_file_paths:
             counter += 1
 
             if text[counter] == "STORE":
-                sheet1_line[columns1.index("STORE")] = int(text[counter + 1])
-                counter += 2
+                try:
+                    sheet1_line[columns1.index("STORE")] = int(text[counter + 1])
+                    counter += 2
+                except:
+                    pass
             if text[counter] == "DEPT" and len(text[counter + 1]) == 3:
                 try:
                     sheet1_line[columns1.index("DEPT")] = departments[text[counter + 1][0:2]]
@@ -300,8 +312,7 @@ for pdf_path in pdf_file_paths:
     df2 = pandas.DataFrame(data2, columns=columns2)
 
     # Save DataFrame to Excel file
-    excel_path = settings_info["new_path"] + pdf_path.split("/")[-1].split(".")[0] + str(
-        datetime.now().strftime(" %b%d %H%M")) + ".xlsx"
+    excel_path = settings_info["new_path"] + pdf_path.split("/")[-1].split(".")[0]+ ".xlsx"
     print(excel_path)
 
     with pandas.ExcelWriter(excel_path, engine='openpyxl') as writer:
